@@ -6,21 +6,21 @@
   (head
     (link :href "app.css" :rel "stylesheet"))
   (body
-   :css {:width "5000px"}
+   :css {:width "5000px" :background-color "black"}
    (let [xs (range 100)
          ys (shuffle xs)
          i (cell nil)]
     (cell= (prn i))
     (for-tpl [x xs]
-     (a x
-      :click #(reset! i (get ys @x))
-      :href (cell= (str "#" i))
-      :id (cell= x)
-      :css (cell= {:color (if (= i x) "blue" "red")
-                   :width "600px"
-                   :height "400px"
-                   :margin "20px"
-                   :display "block"
-                   :float "left"
-                   :outline "none"
-                   :border (str "1px solid " (if (= i x) "blue" "red"))}))))))
+     (with-let [el (img x
+                    :src "/gif.gif"
+                    :click #(reset! i (get ys @x))
+                    :css (cell= {:width "664px"
+                                 :height "473px"
+                                 :display "block"
+                                 :float "left"
+                                 :outline "none"
+                                 :cursor "pointer"}))]
+      (do-watch (cell= (= i x))
+       (fn [_ n]
+        (when n (.scrollTo js/jQuery el (clj->js {:duration 1000}))))))))))
