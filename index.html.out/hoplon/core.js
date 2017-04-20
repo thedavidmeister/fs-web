@@ -91,7 +91,7 @@ var more = seq__8888__$1;
 var vec__8890 = clojure.string.split.call(null,f,/\./,(2));
 var f1 = cljs.core.nth.call(null,vec__8890,(0),null);
 var f2 = cljs.core.nth.call(null,vec__8890,(1),null);
-return clojure.string.join.call(null,"/",cljs.core.reverse.call(null,cljs.core.conj.call(null,more,clojure.string.join.call(null,".",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [[cljs.core.str(f1),cljs.core.str("."),cljs.core.str("d7fda397338b462985ee7edcb5f4eea8")].join(''),f2], null)))));
+return clojure.string.join.call(null,"/",cljs.core.reverse.call(null,cljs.core.conj.call(null,more,clojure.string.join.call(null,".",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [[cljs.core.str(f1),cljs.core.str("."),cljs.core.str("4266bfcfc06741bbb8fcc0eeae1b20aa")].join(''),f2], null)))));
 });
 /**
  * Class normalization for attribute providers.
