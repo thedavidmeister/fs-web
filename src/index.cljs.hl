@@ -3,18 +3,15 @@
            hoplon.jquery))
 
 (html
-  (head
-    (link :href "app.css" :rel "stylesheet"))
   (body
    :css {:width "5000px" :background-color "black"}
    (let [xs (range 100)
          ys (shuffle xs)
-         i (cell nil)]
-    (cell= (prn i))
+         i (cell 0)]
     (for-tpl [x xs]
      (with-let [el (img x
                     :src "/gif.gif"
-                    :click #(reset! i (get ys @x))
+                    :click #(reset! i (get ys @x 0))
                     :css (cell= {:width "664px"
                                  :height "473px"
                                  :display "block"
