@@ -20,24 +20,25 @@
   '[hoplon.boot-hoplon       :refer [hoplon prerender]]
   '[tailrecursion.boot-jetty :refer [serve]])
 
-(deftask dev
-  "Build ew-lp-vis-1 for local development."
-  []
-  (comp
-    (watch)
-    (speak)
-    (hoplon)
-    (reload)
-    (cljs
-     :compiler-options {:foreign-libs [{:file "https://cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"
+(let [compiler-options {:foreign-libs [{:file "https://cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"
                                         :provides ["scrollto.lib"]
-                                        :requires ["hoplon.jquery"]}]})
-    (serve :port 8000)))
+                                        :requires ["hoplon.jquery"]}]}]
 
-(deftask prod
-  "Build ew-lp-vis-1 for production deployment."
+ (deftask front-dev
+  "Build for local development."
   []
   (comp
-    (hoplon)
-    (cljs :optimizations :advanced)
-    (target :dir #{"target"})))
+   (watch)
+   (speak)
+   (hoplon)
+   (reload)
+   (cljs :compiler-options compiler-options)
+   (serve :port 8000)))
+
+ (deftask gh-pages
+  "Build for production deployment."
+  []
+  (comp
+   (hoplon)
+   (cljs :compiler-options compiler-options)
+   (target :dir #{"gh-pages"}))))
