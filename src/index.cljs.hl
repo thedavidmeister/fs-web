@@ -10,11 +10,21 @@
   (head
     (link :href "app.css" :rel "stylesheet"))
   (body
-   (let [xs (range 10)
+   :css {:width "5000px"}
+   (let [xs (range 100)
          ys (shuffle xs)
          i (cell nil)]
-    (cell= (prn xs ys i))
+    (cell= (prn i))
     (for-tpl [x xs]
-     (div x
+     (a x
       :click #(reset! i (get ys @x))
-      :css (cell= {:color (if (= i x) "blue" "red")}))))))
+      :href (cell= (str "#" i))
+      :id (cell= x)
+      :css (cell= {:color (if (= i x) "blue" "red")
+                   :width "600px"
+                   :height "400px"
+                   :margin "20px"
+                   :display "block"
+                   :float "left"
+                   :outline "none"
+                   :border (str "1px solid " (if (= i x) "blue" "red"))}))))))
