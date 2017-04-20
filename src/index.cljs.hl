@@ -10,4 +10,11 @@
   (head
     (link :href "app.css" :rel "stylesheet"))
   (body
-   "Hello world"))
+   (let [xs (range 10)
+         ys (shuffle xs)
+         i (cell nil)]
+    (cell= (prn xs ys i))
+    (for-tpl [x xs]
+     (div x
+      :click #(reset! i (get ys @x))
+      :css (cell= {:color (if (= i x) "blue" "red")}))))))
