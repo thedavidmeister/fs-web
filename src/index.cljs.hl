@@ -1,10 +1,6 @@
 (page "index.html"
- (:require [el.landing-page-vis.dom]
-           [hoplon.svg :as svg]
-           [thi.ng.ndarray.core :as nd]
-           [cljsjs.pixi]
-           [cljsjs.tween]
-           [thi.ng.color.core :as col]))
+ (:require scrollto.lib
+           hoplon.jquery))
 
 (html
   (head

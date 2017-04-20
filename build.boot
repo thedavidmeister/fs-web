@@ -28,7 +28,10 @@
     (speak)
     (hoplon)
     (reload)
-    (cljs)
+    (cljs
+     :compiler-options {:foreign-libs [{:file "https://cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"
+                                        :provides ["scrollto.lib"]
+                                        :requires ["hoplon.jquery"]}]})
     (serve :port 8000)))
 
 (deftask prod
