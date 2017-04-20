@@ -1,2 +1,3 @@
 #!/bin/sh
-git subtree push --prefix gh-pages origin gh-pages
+boot gh-pages;
+git subtree push --prefix gh-pages origin gh-pages;
